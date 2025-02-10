@@ -1,1 +1,111 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+//$primary: #3b57e8;
+$primary: #0b5ed7;
+//$secondary:     $yellow-300;
+//$success: #00E4BA;
+$success: #2AC195;
+//$info: $cyan;
+$info: rgb(58 87 232 / 10%);
+//$warning: rgb(241 106 27);
+//$warning: rgb(252 225 209);
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-900;
+$violet: #712cf9;
+$default: #dee2e6;
+//$default: rgb(0 0 0 / 25%);
+$cold-steel: #f8f7f4;
+//$active-color: #f0f3fa;
+//$active-bg: #f0f3fa;
+$orange: #fb740a;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "orange": $orange
+);
+
+$custom-colors: (
+  "violet": $violet,
+  "info": $info,
+  "default": $default,
+  "success": $success,
+  //"active": $active,
+  "orange": $orange
+);
+
+$nav-pills-link-active-bg: rgb(58 87 232 / 10%);
+$nav-pills-link-active-color: #3b57e8;
+$nav-link-font-weight: 500;
+
+//$table-color: #3b57e8;
+$table-bg: white;
+//$table-striped-color: #3b57e8;
+$table-striped-order: even;
+//$table-striped-bg-factor: .05;
+//$table-striped-bg: rgb(58 87 232 / 10%);
+$table-striped-bg: rgba(11, 94, 215, 0.06);
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import './app/customs';
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+//@import "custom_forms";
+//@import "custom_buttons";
+//@import "custom_utility";
+//@import "custom_pagination";
+//@import "custom_tables";
+//@import "validate";
+//@import "ng_wizard";
+//@import "ng_wizard_theme_arrows";
+
+@each $color, $value in $custom-colors {
+  .btn-#{$color} {
+    @if $color == "default" {
+      @include button-variant(
+          white,
+        $border: $default
+      );
+    } @else if $color == "info" {
+      @include button-variant(
+        $background: $info,
+        $color: $primary,
+        $border: $info
+      );
+    } @else if $color == "success" {
+      @include button-variant(
+        $background: $value,
+        $color: white,
+        $border: $value,
+        $hover-color: white
+      );
+    } @else {
+      @include button-variant(
+          $value,
+          $value,
+      );
+    }
+  }
+}
+
+//#212bb7
+@each $color, $value in $custom-colors {
+  .btn-outline-#{$color} {
+    @if $color == "active" {
+      @include button-outline-variant($value);
+    } @else if $color == "success" {
+      @include button-outline-variant($value, white);
+    } @else {
+      @include button-outline-variant($value);
+    }
+  }
+}

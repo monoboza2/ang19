@@ -1,0 +1,34 @@
+<ng-container>
+  <form>
+    <div class="modal-header">
+      <strong class="modal-title">ตั้งค่าการแจ้งเตือนอีเมล</strong>
+      <button type="button" class="btn-close" aria-label="Close"
+              (click)="activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="mb-3 row">
+        <label class="col-xl-4 ps-xl-4 col-form-label text-end">อีเมล</label>
+        <div class="col-xl-7">
+          <input class="form-control-plaintext" readonly name="email" id="email" [ngModel]="user?.userData?.email">
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-xl-4 ps-xl-4 col-form-label ui-require text-end">ตั้งค่าการแจ้งเตือนอีเมล</label>
+        <div class="col-xl-7">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" [value]="true" type="checkbox" [(ngModel)]="checkEmail" id="check_true" name="check_email"/>
+            <label class="form-check-label" for="check_true">รับ</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <div class="col-12 text-center">
+        <button type="button" (click)="save()" class="btn btn-primary custom-button mr-2 btn-main confirm-btn"> ยืนยันบันทึกข้อมูล</button>
+      </div>
+    </div>
+  </form>
+</ng-container>

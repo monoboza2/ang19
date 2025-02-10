@@ -1,0 +1,22 @@
+.my-drop-zone {
+  border: dashed 2px lightgray;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.nv-file-over {
+  border: dashed 2px #8EBA65;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.preview {
+  max-height: 180px;
+  min-width: 30px;
+  max-width: 100%;
+  cursor: pointer
+}
+
+.browse-file-button {
+  cursor: pointer;
+}

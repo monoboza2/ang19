@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <strong class="modal-title">PDF Viewer</strong>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <img [src]="src" style="width: 100%;" #image [@rotatedState]='rotated'>
+</div>
+<!--<div class="modal-body">-->
+<!--  <div class="bg-blur" [ngStyle]="{'background-image': 'url(' + src + ')'}">-->
+
+<!--  </div>-->
+<!--  <img [src]="src" style="height: 100%; margin: auto; display: block" #image    [@rotatedState]='rotated' >-->
+<!--</div>-->
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-primary" (click)="rotate()">
+    <i class="bi bi-repeat"></i>
+    หมุนรูป
+  </button>
+  <button type="button" class="btn btn-outline-primary mr-auto" (click)="flipImage()">
+    <i class="bi bi-arrow-right"></i> กลับด้านรูป
+  </button>
+  <button type="button" class="btn btn-default border app-btn" (click)="modal.close('Close click')">ปิด</button>
+</div>

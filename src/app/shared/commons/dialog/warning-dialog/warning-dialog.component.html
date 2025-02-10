@@ -1,0 +1,20 @@
+<div *ngIf="title" class="modal-header bg-warning">
+  <strong class="modal-title">
+    {{title}}
+  </strong>
+</div>
+<div class="modal-body">
+  <p *ngIf="!isInnerHTML" class="mb-0">{{content}}</p>
+  <div *ngIf="isInnerHTML" [innerHTML]="content"></div>
+  <div *ngIf="isJSON && json">
+    <ngx-json-viewer [json]="json"></ngx-json-viewer>
+  </div>
+</div>
+<div class="row mt-3 mb-3">
+  <div class="col-12 text-center">
+    <button type="button"
+            class="btn btn-outline-dark btn-custom"
+            (click)=" emit(); this.activeModal.close(false);">ตกลง
+    </button>
+  </div>
+</div>

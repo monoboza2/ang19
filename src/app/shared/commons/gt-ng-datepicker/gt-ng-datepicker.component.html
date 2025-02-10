@@ -1,0 +1,23 @@
+<div class="input-group">
+  <input #datepicker
+         gtDatepickerInputMask
+         class="form-control"
+         [(ngModel)]="value"
+         (ngModelChange)="valueChange()"
+         [minDate]="minDate"
+         [maxDate]="maxDate"
+         placeholder="วว/ดด/ปปปป"
+         name="date"
+         ngbDatepicker
+         #dateRef=ngbDatepicker
+         container="body"
+         autocomplete="off"
+         [disabled]="disabled">
+  <div class="input-group-append">
+    <button class="btn btn-light" [disabled]="disabled" (click)="dateRef.toggle();" type="button">
+      <div class="input-group-addon">
+        <i class="bi bi-calendar-date"></i>
+      </div>
+    </button>
+  </div>
+</div>

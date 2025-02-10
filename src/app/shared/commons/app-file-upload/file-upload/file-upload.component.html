@@ -1,0 +1,89 @@
+@if (size == 'normal') {
+  <input [id]="id"
+         class="form-control d-none"
+         [attr.name]="name"
+         type="file"
+         ng2FileSelect
+         #file
+         [accept]="getAcceptType()"
+         [uploader]="uploader"
+         (change)="upload($event)">
+  @if (!isUploading()) {
+    <label [for]="!disabled? id: 'xyz'" style="max-width: 150px;"
+           class="btn border text-truncate me-2">
+      @if (!disabled) {
+        <img src="/assets/icons/upload-file2.png" alt="" height="18" class="">
+      } @else {
+        <i class="bi bi-x-circle text-muted"></i>
+      }
+      <span *ngIf="!value?.filename" class="ms-2">เลือกไฟล์...</span>
+      <span *ngIf="value?.filename" class="ms-2 small vertical-align-middle">
+      {{ value?.originalName }}
+      </span>
+    </label>
+  } @else {
+    <span class="spinner-border mt-3 spinner-border-sm text-info" role="status"></span>
+    กำลังอัพโหลด...
+  }
+  @if (value?.filename) {
+    <a (click)="preview()" role="button" class="btn btn-default me-2">
+      <i class="bi bi-search small"></i>
+    </a>
+    <a (click)="removeFile()" role="button" class="btn btn-default">
+      <i class="bi bi-trash small"></i>
+    </a>
+  } @else if (!isUploading()) {
+    <span class="d-inline-block align-middle text-muted text-truncate" style="max-width: 150px;">ยังไม่ได้เลือก</span>
+  }
+} @else if (size == 'sm-inline') {
+  <input [id]="id"
+         class="form-control d-none"
+         [attr.name]="name"
+         type="file"
+         ng2FileSelect
+         #filesm
+         [accept]="getAcceptType()"
+         [uploader]="uploader"
+         (change)="upload($event)">
+  @if (!isUploading()) {
+    @if (!disabled) {
+      <div class="uploaded upload-wrapper">
+        <i class="file-icon bi bi-cloud-upload"></i>
+        <div class="file text-truncate" style="max-width: 220px; cursor: pointer;">
+          <div class="file__name ">
+            <a *ngIf="!value?.originalName" (click)="filesm.click()">
+              อัปโหลดไฟล์...
+            </a>
+            <a *ngIf="value?.originalName" role="button" (click)="preview()"
+               class="ms-1 text-decoration-none text-muted">
+              {{ value?.originalName }}
+            </a>
+          </div>
+        </div>
+      </div>
+    } @else if (disabled && value?.originalName) {
+      <div class="uploaded upload-wrapper">
+        <i class="file-icon bi bi-link-45deg"></i>
+        <div class="file text-truncate" style="max-width: 220px; cursor: pointer;">
+          <div class="file__name ">
+            <a role="button" (click)="preview()"
+               class="preview-button text-truncate" style="max-width: 220px; text-decoration: none;">
+              {{ value?.originalName }}
+            </a>
+          </div>
+        </div>
+      </div>
+    } @else if (disabled && !value?.originalName) {
+      <div>
+        <a role="button"
+           class="preview-button no-file-selected text-truncate text-muted"
+           style="max-width: 220px; text-decoration: none;">
+          --ไม่มีไฟล์แนบ--
+        </a>
+      </div>
+    }
+  } @else {
+    <span class="spinner-border spinner-border-sm text-info" role="status" aria-hidden="true"></span>
+    กำลังอัพโหลด...
+  }
+}

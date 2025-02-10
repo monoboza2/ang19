@@ -1,0 +1,22 @@
+.custom-validate {
+  color: #F56564 !important;
+  font-size: 85%;
+  padding: 3px;
+  background-color: rgb(255 250 237);
+  border: 1px solid rgb(255 222 122);
+  border-radius: 0.25rem;
+  margin-top: 2px;
+}
+
+.custom-validate.no-style {
+  color: #F56564 !important;
+  font-size: 85%;
+  padding: 3px;
+  background-color: unset;
+  border: unset;
+  border-radius: unset;
+  margin-top: 2px;
+}
+
+
+

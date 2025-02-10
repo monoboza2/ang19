@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <strong class="modal-title">{{title}}</strong>
+</div>
+<div class="modal-body">
+  <div class="row pdf-content">
+    <div class="col-12" *ngIf="innerHTML" [innerHTML]="innerHTML">
+    </div>
+  </div>
+</div>
+<div class="">
+  <div class="row px-3 pb-3">
+    <div class="col">
+      <button [disabled]="loadingService.isLoading()"
+              [ngClass]="{'float-end': previewMode}" class="btn btn-default btn-custom"
+              (click)="activeModal.close(false)">ปิด
+      </button>
+      <button *ngIf="!previewMode" [disabled]="loadingService.isLoading()" class="btn btn-primary btn-custom float-end"
+              (click)="sign()">ลงนามอิเล็กทรอนิกส์
+      </button>
+    </div>
+  </div>
+</div>

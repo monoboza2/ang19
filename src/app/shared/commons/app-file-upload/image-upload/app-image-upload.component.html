@@ -1,0 +1,46 @@
+<div *ngIf="!readonly"
+     ng2FileDrop
+     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+     (fileOver)="fileOverBase($event)"
+     (change)="upload($event)"
+     [uploader]="uploader"
+     class="well my-drop-zone text-muted text-center">
+  <strong class="me-2">Drag and drop</strong>file or
+  <strong (click)="fileInput.click()" class="browse-file-button text-primary ms-2">click here</strong>
+  <button *ngIf="value" type="button" (click)="value = undefined" class="btn btn-default btn-custom no-fixed btn-sm ms-2">
+    <i class="bi bi-trash3"></i>
+  </button>
+  <input type="file" #fileInput ng2FileSelect [uploader]="uploader" style="display: none"/>
+  <div *ngIf="uploader.queue?.length" class="text-primary mt-2 small">{{uploader.queue[0]?.file?.name}}</div>
+  <!--  preview section -->
+  <div class="my-2" *ngIf="value">
+    <img *ngIf="!value.id"
+         alt="preview"
+         [src]="'api/file-upload/preview?path=' + value.path + '&fileName=' + value.originalFileName + '&contentType=' + value.mime"
+         style="max-height: 180px; max-width: 100%; cursor: pointer"
+         class="align-middle rounded selected-img">
+    <img *ngIf="value.id"
+         alt="preview"
+         [src]="'api/file-upload/' + value.uuid + '/preview?path=' + value.path + '&fileName=' + value.originalFileName + '&contentType=' + value.mime"
+         class="preview align-middle rounded selected-img">
+  </div>
+  <div *ngFor="let validate of validates" class="text-danger small">{{validate}}</div>
+</div>
+<div *ngIf="readonly" class="well text-muted text-center">
+  <ng-container *ngIf="value">
+    <img *ngIf="!value?.id"
+         alt="preview"
+         [src]="'api/file-upload/preview?path=' + value.path + '&fileName=' + value.originalFileName + '&contentType=' + value.mime"
+         class="preview align-middle rounded selected-img">
+    <img *ngIf="value?.id"
+         alt="preview"
+         [src]="'api/file-upload/' + value.uuid + '/preview?path=' + value.path + '&fileName=' + value.originalFileName + '&contentType=' + value.mime"
+         class="preview align-middle rounded selected-img">
+  </ng-container>
+  <div *ngIf="!value" class="text-muted">
+    <i class="fs-1 bi bi-image"></i>
+    <div class="bold">
+      No image found.
+    </div>
+  </div>
+</div>

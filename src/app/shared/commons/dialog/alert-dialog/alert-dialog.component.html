@@ -1,0 +1,28 @@
+@if (title) {
+  <div class="modal-header"
+       [ngClass]="{'custom-bg-warning': type == 'warning', 'custom-bg-danger': type == 'danger', 'text-white': type == 'danger'}">
+    <strong class="modal-title">
+      @if (type == 'info') {
+        <i class="bi bi-patch-question mr-2"></i>
+      } @else {
+        <i class="bi bi-patch-exclamation mr-2"></i>
+      }
+      {{ title }}
+    </strong>
+  </div>
+}
+<div class="modal-body">
+  @if (isInnerHTML) {
+    <div [innerHTML]="content"></div>
+  } @else if (!isInnerHTML) {
+    <p class="mb-0">{{ content }}</p>
+  }
+</div>
+<div class="row mt-3 mb-3">
+  <div class="col-12 text-center">
+    <button type="button"
+            class="btn btn-default btn-custom"
+            (click)=" emit(); this.activeModal.close(false);">ตกลง
+    </button>
+  </div>
+</div>

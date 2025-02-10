@@ -1,0 +1,150 @@
+@font-face {
+  //font-family: "Sarabun";
+  //src: url("assets/fonts/Sarabun/Sarabun-Regular.ttf");
+  //font-family: "IBMPlexSansThaiLooped";
+  //src: url("assets/fonts/IBM_Plex_Sans_Thai_Looped/IBMPlexSansThaiLooped-Regular.ttf");
+  //font-family: "IBMPlexSansThai";
+  //src: url("assets/fonts/IBM_Plex_Sans_Thai/IBMPlexSansThai-Regular.ttf");
+  //font-family: "Noto_Sans_Thai";
+  //src: url("assets/fonts/Noto_Sans_Thai/static/NotoSansThai-Regular.ttf");
+  font-family: "Noto_Sans_Thai_Looped";
+  src: url("assets/fonts/Noto_Sans_Thai_Looped/NotoSansThaiLooped-Light.ttf");
+  font-weight: normal;
+  //font-family: "Prompt";
+  //src: url("assets/fonts/Prompt/Prompt-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Kanit";
+  src: url("assets/fonts/Kanit/Kanit-Light.ttf");
+}
+
+@font-face {
+  font-family: "Noto_Sans_Thai_Looped";
+  src: url("assets/fonts/Noto_Sans_Thai_Looped/NotoSansThaiLooped-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Noto_Sans_Thai_Looped";
+  src: url("assets/fonts/Noto_Sans_Thai_Looped/NotoSansThaiLooped-SemiBold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Noto_Sans_Thai_Looped";
+  src: url("assets/fonts/Noto_Sans_Thai_Looped/NotoSansThaiLooped-Bold.ttf");
+  font-weight: 800;
+}
+
+* {
+  font-family: Noto_Sans_Thai_Looped, serif;
+  font-size: 14px;
+}
+
+html, body {
+  //background-color: #F5F5F5FF;
+  background-color: #f9f9f9;
+}
+
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  height: 100%;
+  overflow-y: hidden;
+
+}
+
+body {
+  overflow-y: hidden;
+}
+
+body[data-default-font-size='14px'] #content * {
+  font-size: 14px;
+}
+
+body[data-default-font-size='16px'] #content * {
+  font-size: 16px;
+}
+
+body[data-default-font-size='18px'] #content * {
+  font-size: 18px;
+}
+
+.table {
+  font-size: 0.825rem;
+
+  th {
+    font-weight: 500;
+  }
+}
+
+label {
+}
+
+.text-hint {
+  color: #a4b2c0bf;
+  cursor: pointer;
+}
+
+.popover-header {
+  background-color: #f8fafc;
+  border: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+//.card {
+//  //box-shadow: 0 0 #0000, 0 0 #0000, 0 0.625rem 1.875rem rgba(0, 0, 0, .03);
+//  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+//}
+
+.custom-box {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  position: relative;
+  border: 0;
+}
+
+.card-mastercup {
+  border-color: #dee2e6;
+  height: 100%;
+}
+
+.bd-callout {
+  --bs-link-color-rgb: var(--bd-callout-link);
+  --bs-code-color: var(--bd-callout-code-color);
+  padding: 1.25rem;
+  //margin-top: 1.25rem;
+  //margin-bottom: 1.25rem;
+  color: var(--bd-callout-color, inherit);
+  background-color: var(--bd-callout-bg, var(--bs-gray-100));
+  border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300));
+}
+
+.bd-callout-warning {
+  --bd-callout-color: var(--bs-warning-text-emphasis);
+  --bd-callout-bg: var(--bs-warning-bg-subtle);
+  --bd-callout-border: var(--bs-warning-border-subtle);
+}
+
+.guarantor-container > .card {
+  background-color: #FFFDE7;
+  //background-color: #F7F7F7;
+  color: #0A3D91;
+}
+
+.btn-group-toggle .btn-secondary.active {
+  background-color: #a8183e !important;
+  border-color: #1976DD !important;
+  color: #ffffff !important;
+}
+
+.ng-invalid {
+  scroll-margin-top: 20rem !important;
+  scroll-margin-bottom: 5rem !important;
+}

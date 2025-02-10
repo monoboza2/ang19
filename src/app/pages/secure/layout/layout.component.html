@@ -1,0 +1,153 @@
+<div class="container-fluid">
+  <div class="row">
+    <ng-template #sidebarOffcanvas let-offcanvas>
+      <div class="offcanvas-header">
+        <h6 class="offcanvas-title text-muted" id="offcanvas-basic-title" ngbAutofocus>
+          ระบบลงทะเบียนสิทธิหลักประกันสุขภาพแห่งชาติ</h6>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="sidebar-offcanvas">
+          <div tabindex="-1" aria-labelledby="sidebar-menu-label">
+            <div class="flex-column">
+              <ng-container [ngTemplateOutlet]="sidebar"></ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isSidebarCollapsed" [horizontal]="true" class="col-auto p-0">
+      <div id="sidebar">
+        <div id="sidebar-menu" tabindex="-1" aria-labelledby="sidebar-menu-label">
+          <div class="flex-column">
+            <ng-container [ngTemplateOutlet]="sidebar"></ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col overflow-y-auto p-0">
+      <header id="header" class="sticky-top w-100 position-relative">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            @if (toggleOffCanvas) {
+              <button class="navbar-toggler d-block border-0 rounded px-1" type="button"
+                      (click)="openSidebarOffcanvas(sidebarOffcanvas)">
+                <i class="bi bi-layout-sidebar text-white fs-3"></i>
+              </button>
+            } @else {
+              <button class="navbar-toggler d-block border-0 rounded px-1" type="button"
+                      [attr.aria-expanded]="!isSidebarCollapsed"
+                      (click)="collapse.toggle()">
+                <i class="bi bi-layout-sidebar text-white fs-3"></i>
+              </button>
+            }
+            <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+              <ul id="select-font-size" class="navbar-nav me-auto mb-lg-0">
+                <li class="nav-item me-1" (click)="setFontSizeTo('14px')">
+                  <input type="radio" class="btn-check" name="options" id="fs14px" [value]="'14px'"
+                         [(ngModel)]="selectedFontSize" autocomplete="off">
+                  <label class="btn btn-outline-light py-0" for="fs14px">ก</label>
+                </li>
+                <li class="nav-item me-1" (click)="setFontSizeTo('16px')">
+                  <input type="radio" class="btn-check" name="options" id="fs16px" [value]="'16px'"
+                         [(ngModel)]="selectedFontSize" autocomplete="off">
+                  <label class="btn btn-outline-light py-0" for="fs16px">ก+</label>
+                </li>
+                <li class="nav-item me-1" (click)="setFontSizeTo('18px')">
+                  <input type="radio" class="btn-check" name="options" id="fs18px" [value]="'18px'"
+                         [(ngModel)]="selectedFontSize" autocomplete="off">
+                  <label class="btn btn-outline-light py-0" for="fs18px">ก++</label>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown flex-row text-end me-1">
+              <a role="button" class="d-block text-decoration-none dropdown-toggle"
+                 style="font-size: 12.5px" data-bs-toggle="dropdown" aria-expanded="false">
+               สมชาย อารี <br>
+                <small style="font-size: 0.8rem">1111
+                  - สำนักงาน</small>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-start text-small" style="right: 0;">
+                <li class="cursor-pointer"><a class="dropdown-item"><i
+                  class="bi bi-person me-2"></i>โปรไฟล์</a></li>
+                <li class="cursor-pointer"><a
+                                                                          class="dropdown-item"><i
+                  class="bi bi-arrow-repeat me-2"></i>สลับ User</a></li>
+                <li class="cursor-pointer"><a class="dropdown-item"><i
+                  class="bi bi-box-arrow-in-right me-2"></i>ออกจากระบบ</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div id="content">
+        <div class="ps-3 pt-3 pe-3 pb-5 mb-5">
+          <app-loading></app-loading>
+          <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+          <app-header></app-header>
+          <router-outlet/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>[
+<ng-template #sidebar>
+  @if (!toggleOffCanvas) {
+    <ul class="nav flex-column sticky-top" style="background: #0a4bac; height: 52px;">
+      <li class="nav-item d-flex justify-content-center p-2">
+        <a class="navbar-brand d-none d-md-flex">
+          <img src="/assets/images/nhso-minimize.webp" alt="Logo" class="">
+          <div class="text-white">ระบบลงทะเบียนสิทธิหลักประกันสุขภาพแห่งชาติ</div>
+        </a>
+      </li>
+    </ul>
+  }
+  <div id="sidebar-content">
+    <ul class="nav flex-column mt-4">
+      <li class="nav-item">
+        <a routerLink="/secure/landing"
+           routerLinkActive="active"
+           class="nav-link btn  d-flex align-items-center align-middle  border-0 gap-2">
+          <i class="bi bi-house-fill"></i>
+          ข่าวประชาสัมพันธ์
+        </a>
+      </li>
+    </ul>
+    <ul
+      customNavCollapse class="nav flex-column">
+      <li class="nav-item" (click)="rightSearchCollapsed =!rightSearchCollapsed"
+          [attr.aria-expanded]="!rightSearchCollapsed">
+        <a class="nav-link nav-link-collapse">
+          <i class="bi bi-shield-fill-check"></i>
+          <span>ตรวจสอบข้อมูล</span>
+          <i class="rtl:rotate-180 right-icon"
+             x-bind:style="selected.includes('menu_style') ? 'transform:  rotate(90deg)' : ''" style="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </i>
+        </a>
+      </li>
+      <div [(ngbCollapse)]="rightSearchCollapsed" class="collapse" id="right-search-collapse" style="">
+        <li
+          class="nav-item">
+          <a
+            class="nav-link btn  d-flex align-items-center align-middle  border-0 gap-2"
+            routerLink="/secure/page1"
+            routerLinkActive="active">
+              page1
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn  d-flex align-items-center align-middle  border-0 gap-2"
+             routerLink="/secure/page2"
+             routerLinkActive="active">
+            page2
+          </a>
+        </li>
+      </div>
+    </ul>
+  </div>
+</ng-template>

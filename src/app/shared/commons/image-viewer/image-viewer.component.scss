@@ -1,0 +1,13 @@
+.img-flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.bg-blur {
+  -webkit-filter: blur(8px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+}

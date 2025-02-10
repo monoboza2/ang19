@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <strong class="modal-title">PDF Viewer</strong>
+</div>
+<div class="modal-body">
+  <!--  <div class="row show-certificate">-->
+  <!--    <div class="col-12">-->
+  <!--      <div class="alert alert-info">-->
+  <!--        <small>-->
+  <!--          <strong><i class="fa fa-key mr-2"></i>Certificate</strong>-->
+  <!--          : todo if absent.-->
+  <!--        </small>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <div class="row pdf-content">
+    <div class="col-12" *ngIf="innerHTML" [innerHTML]="innerHTML">
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default border float-right app-btn" (click)="modal.close('Close click')">ปิด</button>
+</div>

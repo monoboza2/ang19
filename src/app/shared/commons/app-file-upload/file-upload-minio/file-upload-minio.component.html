@@ -1,0 +1,72 @@
+<ng-container *ngIf="size == 'normal'">
+  <input [id]="id"
+         class="form-control d-none"
+         [attr.name]="name"
+         type="file"
+         accept="{{accept}}"
+         ng2FileSelect
+         #file
+         [uploader]="uploader"
+         (change)="upload($event)">
+  <ng-container *ngIf="!isUploading()"
+                class="small file-upload-label {{disabled?'disabled':''}} text-truncate vertical-align-middle"
+                style="max-width: 250px;">
+    <label [for]="!disabled? id: ''"
+           role="button"
+           (click)="file.click()"
+           class="btn btn-default bg-cornsilk border me-2">
+      <i class="bi bi-upload me-2"></i>
+      <span *ngIf="!value">เลือกไฟล์...</span>
+      <span *ngIf="value" class="small text-truncate vertical-align-middle" style="max-width: 150px;">
+      {{value?.originalName}}
+    </span>
+    </label>
+  </ng-container>
+  <ng-container *ngIf="isUploading()">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    กำลังอัพโหลด...
+  </ng-container>
+  <span *ngIf="value" (click)="download()" class="d-inline-block preview-button align-middle text-muted text-truncate"
+        style="max-width: 150px;">
+    <span class="ms-2">ดาวน์โหลด</span>
+  </span>
+  <span *ngIf="!value" class="d-inline-block align-middle text-muted text-truncate" style="max-width: 150px;">ยังไม่ได้เลือก</span>
+</ng-container>
+
+<ng-container *ngIf="size == 'sm-inline'" class="text-nowrap">
+  <input [id]="id"
+         class="form-control d-none"
+         [attr.name]="name"
+         accept="{{accept}}"
+         type="file"
+         ng2FileSelect
+         #filesm
+         [uploader]="uploader"
+         (change)="upload($event)">
+  <ng-container *ngIf="!isUploading()"
+                class="small file-upload-label {{disabled?'disabled':''}} text-truncate vertical-align-middle"
+                style="max-width: 250px;">
+    <label *ngIf="!disabled" role="button" (click)="filesm.click()" class="btn btn-default btn-sm file-select border text-truncate" style="max-width: 100px; ">
+      <i class="bi bi-upload me-1"></i>
+      {{value?.originalName || 'เลือกไฟล์...'}}
+    </label>
+    <a *ngIf="disabled && value?.originalName" role="button" (click)="download()" class="preview-button text-truncate" style="max-width: 100px;">
+      <i class="bi bi-paperclip me-1"></i>
+      {{value?.originalName}}
+    </a>
+    <a *ngIf="disabled && !value?.originalName" role="button" class="preview-button no-file-selected text-truncate text-muted" style="max-width: 100px;">
+      <i>--ไม่มีไฟล์แนบ--</i>
+    </a>
+    <ng-container *ngIf="value?.originalName && !disabled">
+      <span (click)="download()" style="cursor: pointer;" role="button" class="mx-2">
+        ดาวน์โหลด
+      </span>
+      <i *ngIf="!disabled" (click)="removeFile()" style="cursor: pointer;" class="bi bi-trash"></i>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="isUploading()">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    กำลังอัพโหลด...
+  </ng-container>
+</ng-container>
+<custom-error [error]="validates[0]" *ngIf="validates?.length">{{validates[0]}}</custom-error>

@@ -1,0 +1,57 @@
+<div *ngIf="!readonly" class="row row-cols-auto">
+  <label class="col col-form-label">ไฟล์แนบ</label>
+  <div class="col">
+    <input [id]="id + 'FFF'"
+           class="form-control d-none"
+           [attr.name]="name"
+           type="file"
+           ng2FileSelect
+           [uploader]="uploader"
+           (change)="upload($event)">
+    <ng-container *ngIf="!isUploading()"
+                  class="small file-upload-label {{readonly?'readonly':''}} text-truncate vertical-align-middle"
+                  style="max-width: 250px;">
+      <label [for]="!readonly? id + 'FFF': ''"
+             role="button"
+             class="btn btn-default btn-custom border me-2">
+        <i class="bi bi-cloud-upload me-2"></i>
+        <span *ngIf="!file">เลือกไฟล์...</span>
+        <span *ngIf="file" class="small text-truncate vertical-align-middle small" style="max-width: 150px;">
+      {{file?.originalFileName}}
+    </span>
+      </label>
+    </ng-container>
+    <ng-container *ngIf="isUploading()">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      กำลังอัพโหลด...
+    </ng-container>
+    <span *ngIf="!file" class="d-inline-block align-middle text-muted text-truncate" style="max-width: 150px;">ยังไม่ได้เลือก</span>
+  </div>
+</div>
+<ng-container *ngFor="let item of value; let idx = index;">
+  <div class="card custom-box my-3" style="max-width: 540px;">
+    <div class="row row-cols-auto g-0">
+      <div class="col-1 text-primary" style="padding: 1rem">
+        <i (click)="preview(item)" class="bi bi-file-earmark-arrow-down-fill fs-5 d-block my-auto"></i>
+      </div>
+      <div class="col-8">
+        <div class="card-body">
+          <p class="card-text text-truncate">
+            <small class="text-muted">{{item.originalFileName}}</small>
+          </p>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="card-body">
+          <p class="card-text text-truncate">
+            <small class="text-muted">{{fileSize(item)}}</small>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!readonly" class="col-1" style="padding-top: 1rem">
+        <i (click)="remove(idx, item)" class="bi bi-trash fs-5 d-block my-auto" role="button"></i>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div *ngFor="let validate of validates" class="text-danger small">{{validate}}</div>

@@ -1,0 +1,7 @@
+<ng-template ngFor let-breadcrumb [ngForOf]="breadcrumbs | async" let-last=last let-first=first>
+  <div class="mb-3 text-muted" *ngIf="last">
+<!--    <i *ngIf="breadcrumb.label.icon" class="{{breadcrumb.label.icon}} fs-5"></i>-->
+<!--    <i class="bi bi-boxes fs-5"></i>-->
+    {{breadcrumb.label.title}}
+  </div>
+</ng-template>

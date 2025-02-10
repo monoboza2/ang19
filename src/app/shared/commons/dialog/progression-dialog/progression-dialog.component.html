@@ -1,0 +1,7 @@
+<div class="modal-body text-center">
+  @if (!isInnerHTML) {
+    <p class="mb-0">{{ content }}</p>
+  } @else {
+    <div [innerHTML]="content"></div>
+  }
+</div>

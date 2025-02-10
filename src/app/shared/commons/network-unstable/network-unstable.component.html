@@ -1,0 +1,17 @@
+<div #container class="backdrop-container">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="alert alert-light alert-dismissible fade show ml-5 mr-5" role="alert">
+        <div>
+          <i class="fa fa-wifi me-2"></i>
+          ไม่สามารถเชื่อมต่ออินเทอร์เน็ต
+          <button type="button" class="btn-close" aria-label="Close" (click)="container.style.display = 'none'"></button>
+        </div>
+        <hr>
+        <p class="text-center">
+          กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

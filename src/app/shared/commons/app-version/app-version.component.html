@@ -1,0 +1,4 @@
+<div *ngIf="alert" class="alert alert-warning alert-dismissible fade show border-dark me-3" role="alert">
+  <strong>New Version Update!</strong> ตรวจพบเวอร์ชัน {{newVersion}} กรุณากดปุ่ม "Refresh" เพื่อโหลดหน้าเว็บอีกครั้ง
+  <button (click)="refresh()" type="button" class="btn btn-sm btn-primary ms-2">Refresh</button>
+</div>
